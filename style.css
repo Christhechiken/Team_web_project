@@ -1,14 +1,14 @@
 :root {
-  --main: rgb(0, 78, 146);
+  --main: #08F;
   --main-dark: #06c;
   --header-h: 70px;
 }
- 
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: var(--header-h); }
 body { font-family: Arial, Helvetica, sans-serif; color: #223; }
 a { text-decoration: none; color: inherit; }
- 
+
 /* ===== HEADER: Grid 3 cột ===== */
 header {
   position: sticky;
@@ -22,7 +22,7 @@ header {
   align-items: center;
   z-index: 10;
 }
- 
+
 /* Trái: icon + tên */
 .logo {
   display: grid;
@@ -35,12 +35,14 @@ header {
 }
 .logo .icon {
   width: 38px; height: 38px;
+  background: #fff;
   color: var(--main);
+  border-radius: 10px;
   display: grid;
   place-items: center;
   font-size: 22px;
 }
- 
+
 /* Giữa: menu */
 nav {
   display: grid;
@@ -51,7 +53,7 @@ nav {
 nav a { font-weight: bold; padding: 6px 0; border-bottom: 2px solid transparent; }
 nav a:hover,
 nav a.active { border-bottom-color: #fff; }
- 
+
 /* Phải: Login + Register */
 .auth {
   display: grid;
@@ -68,7 +70,7 @@ nav a.active { border-bottom-color: #fff; }
 .auth .login:hover { background: rgba(255,255,255,.2); }
 .auth .register { background: #fff; color: var(--main); }
 .auth .register:hover { background: #e6f3ff; }
- 
+
 /* ===== CÁC VÙNG NỘI DUNG ===== */
 section {
   min-height: calc(100vh - var(--header-h));
@@ -78,7 +80,7 @@ section {
 }
 section h1 { font-size: 72px; color: var(--main); }
 section:nth-of-type(even) { background: #eef6ff; }
- 
+
 /* ===== FORM LOGIN / SIGN UP ===== */
 .form-box {
   width: min(400px, 90%);
@@ -111,7 +113,7 @@ section:nth-of-type(even) { background: #eef6ff; }
   cursor: pointer;
 }
 .form-box button:hover { background: var(--main-dark); }
- 
+
 /* ===== TRANG LOGIN / SIGN UP RIÊNG ===== */
 .form-page {
   min-height: calc(100vh - var(--header-h));
@@ -123,4 +125,42 @@ section:nth-of-type(even) { background: #eef6ff; }
 .form-box .switch { text-align: center; font-size: 14px; }
 .form-box .switch a { color: var(--main); font-weight: bold; }
 .form-box .switch a:hover { text-decoration: underline; }
- 
+
+/* ===== RESPONSIVE: ĐIỆN THOẠI / MÁY TÍNH BẢNG ===== */
+@media (max-width: 768px) {
+  :root { --header-h: 100px; }
+
+  /* Header chuyển thành 2 hàng: [logo | login+register] rồi [menu] */
+  header {
+    padding: 0 16px;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "logo auth"
+      "nav  nav";
+    align-content: center;
+    row-gap: 8px;
+  }
+  .logo { grid-area: logo; font-size: 20px; }
+  .logo .icon { width: 32px; height: 32px; font-size: 18px; }
+
+  .auth { grid-area: auth; column-gap: 8px; }
+  .auth a { padding: 5px 12px; font-size: 14px; }
+
+  nav {
+    grid-area: nav;
+    justify-self: stretch;     /* menu chiếm hết chiều ngang */
+    justify-content: space-between;
+    column-gap: 8px;
+    font-size: 14px;
+  }
+
+  section h1 { font-size: 44px; }
+  .form-box { padding: 24px 20px; }
+}
+
+/* Điện thoại nhỏ */
+@media (max-width: 400px) {
+  .logo { font-size: 18px; }
+  .auth a { padding: 5px 9px; font-size: 13px; }
+  section h1 { font-size: 36px; }
+}
