@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login - Minischool</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ 
+  <header>
+    <a href="index.html#home" class="logo">
+      <span class="icon"><img src="/Testserver/image/Favicon/favicon-32x32.png" alt="Icon"></span>
+      <span>Minischool</span>
+    </a>
+ 
+    <nav>
+      <a href="index.html#home">Home</a>
+      <a href="index.html#course">Course</a>
+      <a href="index.html#about">About us</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+ 
+    <div class="auth">
+      <a href="login.html" class="login">Login</a>
+      <a href="register.html" class="register">Register</a>
+    </div>
+  </header>
+ 
+  <main class="form-page">
+    <form class="form-box" id="loginForm">
+      <h2>Login</h2>
+      <label>Username
+        <input type="text" name="username" placeholder="Enter username" required>
+      </label>
+      <label>Password
+        <input type="password" name="password" placeholder="Enter password" required>
+      </label>
+      <button type="submit">Login</button>
+      <p class="switch">Chưa có tài khoản? <a href="register.html">Register</a></p>
+    </form>
+  </main>
+ 
+  <script src="script.js"></script>
+</body>
+</html>
